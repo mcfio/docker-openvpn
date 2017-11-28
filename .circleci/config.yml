@@ -1,0 +1,21 @@
+version: 2
+jobs:
+  build:
+    machine: true
+    steps:
+      - checkout
+
+      - run:
+          name: Build docker image
+          command: |
+            docker build -f Dockerfile \
+              --build-arg VCS_REF=`git rev-parse --short HEAD` \
+              --build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` \
+              -t mcfio-openvpn-client .
+
+      - run:
+          name: Push image to Docker Hub
+          command: |
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
+            docker tag mcfio-openvpn-client mcfio/openvpn-client:latest
+            docker push mcfio/openvpn-client:latest
