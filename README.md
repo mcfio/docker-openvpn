@@ -8,8 +8,12 @@ OpenVPN is an open-source software application that implements virtual private n
 ## How to use this image
 This image was designed to provided a VPN connection to other containers (using `--net=container:vpn`), see Docker's documentation on [NETWORK: CONTAINER](https://docs.docker.com/engine/reference/run/#network-container)) for additional information.
 
-### Create the initial VPN connection
-You will need to create an openvpn configuration file, authorization file as well as the providers CA and CRL certificate files and store them in a directory that will be bind mounted to the container.  Then `docker run` the container.
+#### Create the initial VPN connection
+You will need to create an openvpn configuration file, authorization file as well as the providers CA and CRL certificate files and store them in a directory that will be bind mounted to the container.
+
+Currently this image expects the openvpn configuration file here `/data/client.ovpn`.  The other file locations are expected, but not necessarily required to be in the `/data` bind mount point either, so long as they are made available to the container in some way.
+
+Then you can start the container like so.
 ```
 sudo docker run -it -d --cap-add=NET_ADMIN --device=/dev/net/tun --name=vpn \
         -v /some/path:/data \
