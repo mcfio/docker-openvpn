@@ -17,7 +17,6 @@ WORKDIR /etc/openvpn
 RUN apk add --no-cache \
     openvpn
 
-COPY config/ /etc/openvpn
 COPY docker-entrypoint.sh /usr/local/bin
 
 VOLUME ["/data"]
