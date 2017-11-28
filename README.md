@@ -1,4 +1,4 @@
-# docker-openvpn [![Build Status](https://travis-ci.org/mcfio/docker-openvpn.svg?branch=master)](https://travis-ci.org/mcfio/docker-openvpn)
+# mcfio/openvpn-client [![Build Status](https://travis-ci.org/mcfio/docker-openvpn.svg?branch=master)](https://travis-ci.org/mcfio/docker-openvpn)
 ![badges-alpine] ![openvpn]
 
 ## What is OpenVPN
